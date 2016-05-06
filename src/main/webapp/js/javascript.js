@@ -1,12 +1,12 @@
 var sessionUser;
 var webSocket;
+var urlWebSocket = 'ws://localhost:8084/YourComics/WS';
 
 
 $(document).ready(function () {
-    webSocket = new WebSocket('ws://localhost:8084/YourComics/login');
-    
+    webSocket = new WebSocket(urlWebSocket);
+
     webSocket.onmessage = function (event) {
-//        console.log(event);
         var eventJson = JSON.parse(event.data);
         switch (eventJson.type) {
             case "login":
@@ -26,7 +26,9 @@ $(document).ready(function () {
     };
 
 
-    webSocket.onerror = function(evt) { alert("WS: Conection Fail"); };
+    webSocket.onerror = function (evt) {
+        alert("WS: Connection failed. Check Logs");
+    };
 
 });
 
@@ -55,7 +57,7 @@ function authentication(user) {
         sessionStorage.user = JSON.stringify(user);
         sessionUser = JSON.parse(sessionStorage.user);
         var welcome = "<a onclick='userProfile(" + sessionUser.id + ")'>" + sessionUser.username + "</a>";
-        $('#headerRight').html('Welcome ' + welcome);
+        $('#headerRight').html('<b>Welcome ' + welcome + '</b>');
         $('#myModal').modal('hide');
     } else {
         $('#messages').html("User or password invalid");
@@ -64,7 +66,9 @@ function authentication(user) {
 }
 
 function userProfile(id) {
-    alert("Perfil del user " + id);
+    var userModal = $('#userModal');
+    $('#userBody').html('<p><b>Username: </b>' + sessionUser.username + '</p> <p><b>Firstname: </b> ' + sessionUser.firstName + '</p><p><b>Lastname: </b> ' + sessionUser.lastName + '</p>');
+    userModal.modal();
 }
 
 
@@ -74,14 +78,13 @@ function userProfile(id) {
 
 
 function showAll(comics) {
-//    console.log(comics);
     var comics = comics;
     var parent = $('#allComics');
     parent.empty();
 
     for (i = 0; i < comics.length; i++) {
-        
-        a = '<article class="col-md-3 col-centered" id="comic" > <figure onclick="showDetails(' + comics[i].id + ')"><img src="img/' + comics[i].cover + '" width="215" height="315" alt=""><figcaption>' + comics[i].character.name + ' - ' + comics[i].title + '</figcaption> </figure></article>';
+
+        a = '<article class="col-md-2 col-centered" id="comic" > <figure onclick="showDetails(' + comics[i].id + ')"><img src="img/' + comics[i].cover + '" width="215" height="315" alt=""><figcaption>' + comics[i].character.name + ' - ' + comics[i].title + '</figcaption> </figure></article>';
         parent.append(a);
     }
 }
@@ -99,12 +102,12 @@ function showDetails(id) {
 
 
 }
-function describeComic (comic) {
+function describeComic(comic) {
 
-    $('#comicTitle').html('<h3>'+comic.title+'</h3>');
+    $('#comicTitle').html('<h3><b>' + comic.title + '</b></h3>');
     $('#comicBody').html(
-            '<article> <img src="img/' + comic.cover + '" width="215" height="315"></img> <br> <span>Character: '+comic.character.name +'</span><br> <span>Title: '+comic.title +'</span> <br>  <span>Number: '+comic.number +'</span><br> <span>Genre: '+comic.genre.name +'</span> <br><span>Publisher: '+comic.genre.name +'</span> </article>'
-           
+            '<article> <img src="img/' + comic.cover + '" width="215" height="315"></img> <br> <p><b>Character: </b>' + comic.character.name + '</p>  <p><b>Number: </b>' + comic.number + '</p> <p><b>Genre: </b>' + comic.genre.name + '</p> <p><b>Publisher: </b>' + comic.publisher.name + '</p> <p><b>Rating: </b>' + comic.rating + '</p> <p><b>Available: </b>' + comic.available + '</p> </article>'
+
             );
     $('#comicModal').modal();
 }

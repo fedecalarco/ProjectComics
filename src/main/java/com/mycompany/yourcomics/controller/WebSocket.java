@@ -18,9 +18,9 @@ import org.json.JSONObject;
  * @author federico.calarco
  */
 @ServerEndpoint(
-        value = "/login"
+        value = "/WS"
 )
-public class LoginWebSocket {
+public class WebSocket {
 
     @OnOpen
     public void onOpen(Session session) throws IOException {
