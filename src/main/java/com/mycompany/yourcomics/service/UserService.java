@@ -15,19 +15,18 @@ import org.springframework.stereotype.Service;
 @Transactional
 public class UserService {
 
-    
     UserDao userDao = new UserDaoImpl();
 
     public JSONObject read(JSONObject userJson) {
 
         User user = userDao.login(userJson.getString("username"), userJson.getString("password"));
-        
+
         // Carga los datos del User en el JSON 
-        if ( user != null) {
+        if (user != null) {
             userJson.put("ok", "true");
             userJson.put("id", user.getId());
             userJson.put("firstName", user.getFirstName());
-            userJson.put("lastName", user.getLastName());       
+            userJson.put("lastName", user.getLastName());
         } else {
             userJson.put("ok", "false");
         }

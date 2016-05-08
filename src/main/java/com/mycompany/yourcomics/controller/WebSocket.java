@@ -22,6 +22,8 @@ import org.json.JSONObject;
 )
 public class WebSocket {
 
+    JSONObject jObj;
+
     @OnOpen
     public void onOpen(Session session) throws IOException {
         System.out.println("WebSocket opened: " + session.getId());
@@ -34,7 +36,7 @@ public class WebSocket {
 
         System.out.println("Message received: " + txt);
 
-        JSONObject jObj = new JSONObject(txt);
+        jObj = new JSONObject(txt);
 
         String type = jObj.get("type").toString();
         switch (type) {
@@ -46,6 +48,9 @@ public class WebSocket {
                 break;
             case "getComic":
                 getComic(session, jObj.getLong("id"));
+                break;
+            case "getComicsFilter":
+                getComicsFilter(session, jObj.getString("filter"));
                 break;
             default:
                 System.out.println("default");
@@ -63,6 +68,9 @@ public class WebSocket {
     @OnError
     public void onError(Throwable t) {
     }
+    
+    
+    // - LoginController.class - Move!
 
     public void login(Session session, JSONObject userJson) throws IOException {
 
@@ -73,28 +81,27 @@ public class WebSocket {
         session.getBasicRemote().sendText(user.toString());
 
     }
-    
-    
-    
-    
-    // - Clase nueva -
+
+    // - ComicController.class -
     ComicService comicService = new ComicService();
 
     public void getAllComics(Session session) throws IOException {
 
-        System.out.println("Get All Comics method");
-        
-
-      //  JSONArray allComics = comicService.getAll();
-        
-        JSONObject jObj = comicService.getAll();
+        jObj = comicService.getAll();
         session.getBasicRemote().sendText(jObj.toString());
 
     }
-    
-    public void getComic(Session session,long id) throws IOException{
-        
-        JSONObject jObj = comicService.getComicById(id);
+
+    public void getComic(Session session, long id) throws IOException {
+
+        jObj = comicService.getComicById(id);
+        session.getBasicRemote().sendText(jObj.toString());
+
+    }
+
+    public void getComicsFilter(Session session, String filter) throws IOException {
+
+        jObj = comicService.getComicFilter(filter);
         session.getBasicRemote().sendText(jObj.toString());
 
     }

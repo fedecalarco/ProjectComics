@@ -9,6 +9,7 @@ import com.mycompany.yourcomics.entity.Comic;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -73,6 +74,32 @@ public class ComicDaoImpl implements ComicDao {
             System.out.println("session : " + session);
             transaction = session.beginTransaction();
             lstAllComics = session.createCriteria(Comic.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return lstAllComics;
+    }
+
+    @Override
+    public List<Comic> getFilter(String filter) {
+        System.out.println(filter);
+
+        List<Comic> lstAllComics = new ArrayList<Comic>();
+
+        Session session = null;
+        Transaction transaction = null;
+        try {
+            session = HibernateConnector.getInstance().getSession();
+            System.out.println("session : " + session);
+            transaction = session.beginTransaction();
+
+            Query query = session.createQuery(
+                    "FROM com.mycompany.yourcomics.entity.Comic WHERE genre.name LIKE (:filter) OR edition LIKE (:filter) OR character.name LIKE (:filter)");
+            query.setParameter("filter", filter);
+            lstAllComics = query.list();
+            System.out.println(lstAllComics.size());
             transaction.commit();
         } catch (Exception e) {
             e.printStackTrace();

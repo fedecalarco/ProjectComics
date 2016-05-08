@@ -19,5 +19,6 @@ public interface ComicDao {
     void delete(Comic comic);
     
     List<Comic> getAll();
+    List<Comic> getFilter(String filter);
     
 }

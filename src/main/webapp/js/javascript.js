@@ -1,11 +1,11 @@
 var sessionUser;
 var webSocket;
-var urlWebSocket = 'ws://localhost:8084/YourComics/WS';
+var urlWebSocket = 'ws://localhost:8080/YourComics/WS';
+
 
 
 $(document).ready(function () {
     webSocket = new WebSocket(urlWebSocket);
-
     webSocket.onmessage = function (event) {
         var eventJson = JSON.parse(event.data);
         switch (eventJson.type) {
@@ -18,24 +18,17 @@ $(document).ready(function () {
             case "descriptionComic":
                 describeComic(eventJson.comic);
                 break;
-
             default:
                 alert("Error: Type not found");
-
         }
     };
-
-
     webSocket.onerror = function (evt) {
         alert("WS: Connection failed. Check Logs");
     };
-
 });
-
 $('#btnLogin').click(function () {
     var username = $('#username').val();
     var pass = $('#pass').val();
-
     webSocket.send(
             JSON.stringify(
                     {
@@ -46,11 +39,6 @@ $('#btnLogin').click(function () {
                     }
             ));
 });
-
-
-
-
-
 function authentication(user) {
 //    console.log(user);
     if (user.ok === "true") {
@@ -78,10 +66,10 @@ function userProfile(id) {
 
 
 function showAll(comics) {
+    console.log(comics);
     var comics = comics;
     var parent = $('#allComics');
     parent.empty();
-
     for (i = 0; i < comics.length; i++) {
 
         a = '<article class="col-md-2 col-centered" id="comic" > <figure onclick="showDetails(' + comics[i].id + ')"><img src="img/' + comics[i].cover + '" width="215" height="315" alt=""><figcaption>' + comics[i].character.name + ' - ' + comics[i].title + '</figcaption> </figure></article>';
@@ -99,8 +87,6 @@ function showDetails(id) {
 
                     }
             ));
-
-
 }
 function describeComic(comic) {
 
@@ -124,49 +110,53 @@ function getAllComic() {
             ));
 }
 
-
+// BUTTONS NAVBAR
 
 var subNav = $("#nav2");
 
 $("#nav-genres").click(function () {
-
-    subNav.html(
-            '<div class="col-md-2"><a href="#">Superhero</a></div>' +
-            '<div class="col-md-2"><a href="#">Horror</a></div>' +
-            '<div class="col-md-2"><a href="#">Non-Fiction</a></div>' +
-            '<div class="col-md-2"><a href="#">Science-Fiction</a></div>' +
-            '<div class="col-md-2"><a href="#">Others</a></div>'
-            );
-
+    subNav.empty();
+    var genres = ["Superhero", "Horror", "Non-Fiction", "Science-Fuction", "Others"];
+    for (i = 0; i < genres.length; i++) {
+        a = '<div class="col-md-2"> <a href="#" onClick="getComicsFilter(\'' + genres[i] + '\')">' + genres[i] + '</a></div>';
+        subNav.append(a);
+    }
     subNav.show();
 });
 
-
 $('#nav-editions').click(
         function () {
-            subNav.html(
-                    '<div class="col-md-2"><a href="#">Standard</a></div>' +
-                    '<div class="col-md-2"><a href="#">Collector</a></div>'
 
-                    );
-
+            subNav.empty();
+            var editions = ["Standard", "Collector"];
+            for (i = 0; i < editions.length; i++) {
+                a = '<div class="col-md-2"> <a href="#" onClick="getComicsFilter(\'' + editions[i] + '\')">' + editions[i] + '</a></div>';
+                subNav.append(a);
+            }
             subNav.show();
-
         });
+
 
 $('#nav-characters').click(
         function () {
-
-            subNav.html(
-                    '<div class="col-md-2"><a href="#">Batman</a></div>' +
-                    '<div class="col-md-2"><a href="#">X-Men</a></div>' +
-                    '<div class="col-md-2"><a href="#">Spiderman</a></div>' +
-                    '<div class="col-md-2"><a href="#">Spawn</a></div>'
-
-                    );
-
+            subNav.empty();
+            var characters = ["Batman", "X-Men", "Spiderman", "Spawn"];
+            for (i = 0; i < characters.length; i++) {
+                a = '<div class="col-md-2"> <a href="#" onClick="getComicsFilter(\'' + characters[i] + '\')">' + characters[i] + '</a></div>';
+                subNav.append(a);
+            }
             subNav.show();
-
         });
-
         
+        
+function getComicsFilter(filter) {
+
+    webSocket.send(
+            JSON.stringify(
+                    {
+                        type: "getComicsFilter",
+                        filter: filter
+
+                    }
+            ));
+};
