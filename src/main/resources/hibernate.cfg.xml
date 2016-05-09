@@ -10,7 +10,7 @@
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/yourcomic?zeroDateTimeBehavior=convertToNull</property>
         <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.connection.password">123123</property>
+        <property name="hibernate.connection.password"></property>
         <property name="hbm2ddl.auto">update</property>
         <mapping class="com.mycompany.yourcomics.entity.User" />
         <mapping class="com.mycompany.yourcomics.entity.Comic" />

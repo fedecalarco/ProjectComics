@@ -1,6 +1,6 @@
 var sessionUser;
 
-var webSocket = new WebSocket('ws://localhost:8080/YourComics/WS');
+var webSocket = new WebSocket('ws://localhost:8084/YourComics/WS');
 
 webSocket.onmessage = function (event) {
     var eventJson = JSON.parse(event.data);
@@ -25,7 +25,9 @@ webSocket.onerror = function (evt) {
 
 
 
-// USER LOGIN 
+/*
+ * USER LOGIN 
+ */
 
 $('#btnLogin').click(function () {
     webSocket.send(
@@ -58,11 +60,6 @@ function userProfile(id) {
 }
 
 
-
-
-
-
-
 function showAll(comics) {
 
 
@@ -84,7 +81,6 @@ function showAll(comics) {
 }
 
 
-
 function showDetails(id) {
     webSocket.send(
             JSON.stringify(
@@ -104,7 +100,6 @@ function describeComic(comic) {
             );
     $('#comicModal').modal();
 }
-
 
 
 function getAllComic() {

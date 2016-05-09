@@ -50,7 +50,7 @@ public class Main {
 
         Comic comic1 = new Comic("Knightfall", 622, "Batman_Knightfall_Broken_Bat_2002_Edition.jpg", true, 4, "Standard", batman, dc, superhero);
         Comic comic2 = new Comic("Death in the family", 305, "Batman_Death_in_the_Family.jpg", true, 5, "Standard", batman, dc, superhero);
-        Comic comic3 = new Comic("Avenging spiderman", 1, "Avenging_SpiderMan_1_Cover.jpg", true, 3, "Standard", spiderman, marvel, superhero);
+        Comic comic3 = new Comic("Avenging spiderman", 1, "Avenging_SpiderMan.jpg", true, 3, "Standard", spiderman, marvel, superhero);
         Comic comic4 = new Comic("A legend reborn", 1, "X-Men_Vol_2_1_Magneto_Variant.jpg", true, 5, "Collector", xmen, marvel, superhero);
         Comic comic5 = new Comic("Milestone", 100, "2171682-spawn__117__2002_.jpg", false, 3, "Collector", spawn, imageComics, superhero);
         Comic comic6 = new Comic("How to pass", 1, "4802806-04.jpg", true, 2, "Standard", howToPassAsHumanBeing, darkHorse, nonFiction);
