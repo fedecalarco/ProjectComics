@@ -53,14 +53,14 @@ public class Main {
         Comic comic3 = new Comic("Avenging spiderman", 1, "Avenging_SpiderMan_1_Cover.jpg", true, 3, "Standard", spiderman, marvel, superhero);
         Comic comic4 = new Comic("A legend reborn", 1, "X-Men_Vol_2_1_Magneto_Variant.jpg", true, 5, "Collector", xmen, marvel, superhero);
         Comic comic5 = new Comic("Milestone", 100, "2171682-spawn__117__2002_.jpg", false, 3, "Collector", spawn, imageComics, superhero);
-        Comic comic6 = new Comic("How to pass as human being", 1, "4802806-04.jpg", true, 2, "Standard", howToPassAsHumanBeing, darkHorse, nonFiction);
+        Comic comic6 = new Comic("How to pass", 1, "4802806-04.jpg", true, 2, "Standard", howToPassAsHumanBeing, darkHorse, nonFiction);
         
         cm.create(comic1);
         cm.create(comic2);
         cm.create(comic3);
         cm.create(comic4);
         cm.create(comic5);
-        cm.create(comic6);
+
 
     }
 

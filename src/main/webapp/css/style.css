@@ -1,37 +1,13 @@
-a:link{color:white}
-a:visited{color:white}
-a:hover{color:white}
-a:active{color:white}
-a:focus{color:white}
-
-
-
+a:link{color:white;}
+a:visited{color:white;}
+a:hover{color:#fff;}
+a:active{color:white;}
+a:focus{color:white;}
 
 body{
     font-family: 'Roboto', sans-serif;
-
-
+    background-image: url("../img/bg.jpg");
 }
-
-
-#titulo-img {
-    background-color: dimgrey;
-    color: white;
-    position:absolute;
-    top:0;
-} 
-
-#descripcion-img{
-    z-index:100;
-    position:absolute;    
-    color:white;
-    font-size:16px;
-    top: 300px;
-}
-
-
-
-
 
 .row-centered {
     text-align:center;
@@ -44,11 +20,52 @@ body{
 }
 
 
-#noticia-index{
-    text-align: center;
-    padding: 20px;
+
+
+nav{
+    color: #fff;
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
+
+}
+
+#nav1{
+    background-color: green; 
+    padding: 10px;
+}
+
+#nav2{
+    background-color: #2f2f2f; 
+    display: none;
+
+
 }
 
 #comic{
-    background-color: white; margin: 10px;text-align: center;
+    margin-bottom: 20px;
+    text-align: center;
+
 }
+
+#myCarousel{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#footer{
+    padding: 20px;
+    background-color: #2f2f2f; 
+    color: #fff;
+}
+
+#comic img {
+    opacity: 0.9;
+    filter: alpha(opacity=40); /* For IE8 and earlier */
+}
+
+#comic img:hover {
+    opacity: 1.0;
+    filter: alpha(opacity=100); /* For IE8 and earlier */
+}
+
