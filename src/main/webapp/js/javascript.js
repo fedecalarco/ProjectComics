@@ -120,7 +120,7 @@ $("#nav-genres").hover(function () {
     subNav.empty();
     var genres = ["Superhero", "Horror", "Non-Fiction", "Science-Fuction", "Others"];
     for (i = 0; i < genres.length; i++) {
-        a = '<div class="col-md-2"> <a href="#" onClick="getComicsFilter(\'' + genres[i] + '\')">' + genres[i] + '</a></div>';
+        a = '<div class="col-md-2"> <a href="#" onClick="getComicsFilter(\'' + genres[i] + '\')"><b>' + genres[i] + '</b></a></div>';
         subNav.append(a);
     }
     subNav.show();
@@ -132,7 +132,7 @@ $('#nav-editions').hover(
             subNav.empty();
             var editions = ["Standard", "Collector"];
             for (i = 0; i < editions.length; i++) {
-                a = '<div class="col-md-2"> <a href="#" onClick="getComicsFilter(\'' + editions[i] + '\')">' + editions[i] + '</a></div>';
+                a = '<div class="col-md-2"> <a href="#" onClick="getComicsFilter(\'' + editions[i] + '\')"><b>' + editions[i] + '</b></a></div>';
                 subNav.append(a);
             }
             subNav.show();
@@ -144,7 +144,7 @@ $('#nav-characters').hover(
             subNav.empty();
             var characters = ["Batman", "X-Men", "Spiderman", "Spawn"];
             for (i = 0; i < characters.length; i++) {
-                a = '<div class="col-md-2"> <a href="#" onClick="getComicsFilter(\'' + characters[i] + '\')">' + characters[i] + '</a></div>';
+                a = '<div class="col-md-2"> <a href="#" onClick="getComicsFilter(\'' + characters[i] + '\')"><b>' + characters[i] + '</b></a></div>';
                 subNav.append(a);
             }
             subNav.show();
