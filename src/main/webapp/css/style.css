@@ -5,6 +5,7 @@ a:active{color:white;}
 a:focus{color:white;}
 
 body{
+    padding-top: 32px;
     font-family: 'Roboto', sans-serif;
     background-image: url("../img/bg.jpg");
 }
@@ -23,24 +24,11 @@ body{
 
 
 nav{
-    color: #fff;
     -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
     box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
-
 }
 
-#nav1{
-    background-color: green; 
-    padding: 10px;
-}
-
-#nav2{
-    background-color: #2f2f2f; 
-    display: none;
-
-
-}
 
 #comic{
     margin-bottom: 20px;
@@ -69,3 +57,13 @@ nav{
     filter: alpha(opacity=100); /* For IE8 and earlier */
 }
 
+
+.navbar{
+    background-color: #2f2f2f;
+    color: #fff;
+    min-height:32px !important
+}
+
+.navbar-nav button {margin-right: 15px !important; padding-top:5px !important; padding-bottom:5px !important; margin: 0px !important }
+.navbar-nav > li > a {padding-top:5px !important; padding-bottom:5px !important;}
+.navbar-nav p {padding-top:5px !important; padding-bottom:5px !important;margin: 0px;}

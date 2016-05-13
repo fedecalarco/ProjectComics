@@ -13,33 +13,53 @@
 
         <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     </head>
+
     <body>
 
-        <div class="container-fluid">
+        <!--        <div class="container-fluid">
+        
+                    <header>
+                    </header>
+                </div>-->
 
-            <header>
-                <div class="row " style="background-color: white;">
-                    <div class="col-md-6">
-                        <h2 style="margin:0px;"><b>YOUR-COMIC</b></h2>
-                    </div>
+        <nav class="navbar navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
+                <!--<a class="navbar-brand" href="#">YOUR-COMIC <span class="glyphicon glyphicon-triangle-right"></span></a>-->
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Genres</b><span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" onClick="getComicsFilter('Superhero')">Superhero</a></li>
+                            <li><a href="#" onClick="getComicsFilter('Horror')">Horror</a></li>
+                            <li><a href="#" onClick="getComicsFilter('Science-Fuction')">Science-Fuction</a></li>
+                            <li><a href="#" onClick="getComicsFilter('Others')">Others</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Editions</b><span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" onClick="getComicsFilter('Standard')">Standard</a></li>
+                            <li><a href="#" onClick="getComicsFilter('Collector')">Collector</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"><b>News</b></a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Characters</b><span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" onClick="getComicsFilter('Batman')">Batman</a></li>
+                            <li><a href="#" onClick="getComicsFilter('X-Men')">X-Men</a></li>
+                            <li><a href="#" onClick="getComicsFilter('Spiderman')">Spiderman</a></li>
+                            <li><a href="#" onClick="getComicsFilter('Spawn')">Spawn</a></li>
+                        </ul>
+                    </li>
+                </ul>
 
-                    <div class="col-md-6 text-right" id="headerRight">
-                        <button type="button" class="btn btn-info btn-md btn-link" data-toggle="modal" data-target="#loginModal">Login</button>
-                    </div>
-                </div>
-            </header>
+                <div class="nav navbar-nav navbar-right" id="headerRight"> <button type="button" class="btn btn-default btn-xs navbar-btn" data-toggle="modal" data-target="#loginModal">Sign in</button></div>
 
-            <nav>
-                <div class="row text-center" id="nav1">
-                    <div class="col-md-3" id="nav-genres"><a href="#"><b>GENRES</b></a></div>
-                    <div class="col-md-3" id="nav-editions"><a href="#"><b>EDITIONS</b></a></div>
-                    <div class="col-md-3" id="nav-news"><a href="#"><b>NEWS</b></a></div>
-                    <div class="col-md-3" id="nav-characters"><a href="#"><b>CHARACTERS</b></a></div>
-                </div>
-            </nav>
-            <nav class="row text-center" id="nav2"></nav>
 
-        </div>
+            </div>
+
+        </nav>
 
         <div class="container" >
 

@@ -45,8 +45,8 @@ function authentication(user) {
     if (user.ok === "true") {
         sessionStorage.user = JSON.stringify(user);
         sessionUser = JSON.parse(sessionStorage.user);
-        var welcome = "<a onclick='userProfile(" + sessionUser.id + ")'>" + sessionUser.username + "</a>";
-        $('#headerRight').html('<b>Welcome ' + welcome + '</b>');
+        var welcome = "<a onclick='userProfile(" + sessionUser.id + ")' href='#'>" + sessionUser.username + "</a>";
+        $('#headerRight').html('<p><b>Welcome ' + welcome + '</b></>');
         $('#loginModal').modal('hide');
     } else {
         $('#messages').html("Your username or password was incorrect. Please try again.");
@@ -111,44 +111,6 @@ function getAllComic() {
                     }
             ));
 }
-
-// BUTTONS NAVBAR
-
-var subNav = $("#nav2");
-
-$("#nav-genres").hover(function () {
-    subNav.empty();
-    var genres = ["Superhero", "Horror", "Non-Fiction", "Science-Fuction", "Others"];
-    for (i = 0; i < genres.length; i++) {
-        a = '<div class="col-md-2"> <a href="#" onClick="getComicsFilter(\'' + genres[i] + '\')"><b>' + genres[i] + '</b></a></div>';
-        subNav.append(a);
-    }
-    subNav.show();
-});
-
-$('#nav-editions').hover(
-        function () {
-
-            subNav.empty();
-            var editions = ["Standard", "Collector"];
-            for (i = 0; i < editions.length; i++) {
-                a = '<div class="col-md-2"> <a href="#" onClick="getComicsFilter(\'' + editions[i] + '\')"><b>' + editions[i] + '</b></a></div>';
-                subNav.append(a);
-            }
-            subNav.show();
-        });
-
-
-$('#nav-characters').hover(
-        function () {
-            subNav.empty();
-            var characters = ["Batman", "X-Men", "Spiderman", "Spawn"];
-            for (i = 0; i < characters.length; i++) {
-                a = '<div class="col-md-2"> <a href="#" onClick="getComicsFilter(\'' + characters[i] + '\')"><b>' + characters[i] + '</b></a></div>';
-                subNav.append(a);
-            }
-            subNav.show();
-        });
 
 
 function getComicsFilter(filter) {
